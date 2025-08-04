@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self'; connect-src 'self'; media-src 'self'; img-src 'self' data:;">
+    <title>Voice Notes App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-microphone"></i> Voice Notes</h1>
+            <p>Your intelligent voice-powered note-taking companion</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Voice Recording Section -->
+            <div class="recording-section">
+                <div class="voice-controls">
+                    <button id="recordBtn" class="record-btn">
+                        <i class="fas fa-microphone"></i>
+                        <span>Start Recording</span>
+                    </button>
+                    <button id="stopBtn" class="stop-btn" disabled>
+                        <i class="fas fa-stop"></i>
+                        <span>Stop</span>
+                    </button>
+                    <button id="playBtn" class="play-btn" disabled>
+                        <i class="fas fa-play"></i>
+                        <span>Read Aloud</span>
+                    </button>
+                </div>
+                
+                <div class="recording-status">
+                    <div id="recordingIndicator" class="recording-indicator hidden">
+                        <div class="pulse"></div>
+                        <span>Recording...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note Categories -->
+            <div class="categories-section">
+                <h3>Note Categories</h3>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">
+                        <i class="fas fa-list"></i> All Notes
+                    </button>
+                    <button class="tab-btn" data-category="todo">
+                        <i class="fas fa-check-square"></i> To-Do
+                    </button>
+                    <button class="tab-btn" data-category="grocery">
+                        <i class="fas fa-shopping-cart"></i> Grocery
+                    </button>
+                    <button class="tab-btn" data-category="academic">
+                        <i class="fas fa-graduation-cap"></i> Academic
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transcription Display -->
+            <div class="transcription-section">
+                <div class="transcription-header">
+                    <h3>Live Transcription</h3>
+                    <select id="noteCategory" class="category-select">
+                        <option value="general">General Note</option>
+                        <option value="todo">To-Do Item</option>
+                        <option value="grocery">Grocery Item</option>
+                        <option value="academic">Academic Note</option>
+                    </select>
+                </div>
+                <div id="transcriptionText" class="transcription-display">
+                    Start recording to see your speech transcribed here...
+                </div>
+                <div class="transcription-controls">
+                    <button id="saveBtn" class="save-btn" disabled>
+                        <i class="fas fa-save"></i> Save Note
+                    </button>
+                    <button id="clearBtn" class="clear-btn">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notes Display -->
+            <div class="notes-section">
+                <div class="notes-header">
+                    <h3>Your Notes</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchNotes" placeholder="Search notes...">
+                    </div>
+                </div>
+                <div id="notesContainer" class="notes-container">
+                    <!-- Notes will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Button -->
+    <button id="exportBtn" class="export-btn" title="Export Notes">
+        <i class="fas fa-download"></i>
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
